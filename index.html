@@ -9,15 +9,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/white.min.css">
 
-  <!-- Highlight.js for code highlighting -->
+  <!-- Highlight.js -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
 
   <style>
-    /* Custom styling */
-    .reveal { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .reveal { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
     .chart { width: 90%; height: 420px; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     .big-email { font-size: 0.9rem; opacity: 0.9; }
-    /* dark section sample */
     .has-dark-background { background: #243044; color: #fff; }
   </style>
 </head>
@@ -25,138 +23,105 @@
   <div class="reveal">
     <div class="slides">
 
-      <!-- Title slide -->
+      <!-- Title -->
       <section>
         <h1>Quarterly Earnings Report</h1>
-        <p>Interactive presentation — Reveal.js</p>
-        <p class="big-email">Contact: <a href="mailto:24f1001642@ds.study.iitm.ac.in">24f1001642@ds.study.iitm.ac.in</a></p>
-        <aside class="notes">Introduce yourself: role, objective of this presentation, and high-level topline numbers.</aside>
+        <p>Interactive Reveal.js Presentation</p>
+        <p class="big-email">Contact: 24f1001642@ds.study.iitm.ac.in</p>
       </section>
 
-      <!-- Markdown slide -->
+      <!-- Markdown -->
       <section data-markdown>
         <textarea data-template>
 ## Highlights — Q4
 
-- Revenue growth: **12%** YoY (driven by product X)
-- Operating margin improved by **2.1ppt**
-- One-time restructuring cost: **₹ 45M**
+- Revenue growth: **12%**
+- Margin improved: **2.1 ppt**
+- One-time restructuring cost: **₹45M**
 
 ---
 
 ## Agenda
-
-1. Executive summary
-2. Revenue & growth drivers
-3. Expense analysis
-4. Outlook & guidance
+1. Summary  
+2. Revenue drivers  
+3. Expense analysis  
+4. Forecast  
         </textarea>
-        <aside class="notes">Use this slide to orient stakeholders; mention data sources and time-periods covered.</aside>
       </section>
 
-      <!-- Fragment / Animated elements -->
+      <!-- Fragments -->
       <section>
-        <h2>Key Points (appear sequentially)</h2>
+        <h2>Key Points</h2>
         <ul>
           <li class="fragment">Revenue exceeded guidance</li>
-          <li class="fragment">Customer churn decreased</li>
-          <li class="fragment fade-up">Investment in R&D up 15%</li>
+          <li class="fragment">Churn decreased</li>
+          <li class="fragment fade-up">R&D investment up 15%</li>
         </ul>
-        <aside class="notes">Advance a bullet at a time — explain the drivers behind each point.</aside>
       </section>
 
-      <!-- Code with syntax highlighting -->
+      <!-- Code -->
       <section>
-        <h2>Data extraction (example)</h2>
+        <h2>Data Extraction</h2>
         <pre><code class="language-python">
-# sample: compute YoY growth
 import pandas as pd
 
-def yoy_growth(df, period_col='period', value_col='revenue'):
-    df = df.sort_values(period_col)
-    prev = df[value_col].shift(4)  # previous year (quarterly)
-    df['yoy_growth'] = (df[value_col] - prev) / prev * 100
+def yoy_growth(df):
+    prev = df['revenue'].shift(4)
+    df['yoy'] = (df['revenue'] - prev) / prev * 100
     return df
-
-# Usage:
-# df = pd.read_csv('financials.csv')
-# df = yoy_growth(df)
         </code></pre>
-        <aside class="notes">Call out assumptions (quarterly data, no missing quarters). Mention location of the full script in the repo.</aside>
       </section>
 
-      <!-- Math / formula -->
+      <!-- Math -->
       <section>
         <h2>Financial Formula</h2>
-        <p>Bayesian update for scenario weighting (example):</p>
-        <p>\[ P(\text{Scenario A} \mid D) = \frac{P(D \mid \text{A}) \, P(\text{A})}{\sum_{i} P(D \mid \text{S}_i) P(\text{S}_i)} \]</p>
-        <aside class="notes">Explain how this can be used to weight different macro scenarios based on incoming data.</aside>
+        <p>\[
+ROE = \frac{Net\ Income}{Shareholder\ Equity}
+\]</p>
       </section>
 
-      <!-- Simple interactive chart placeholder (D3/Plot could be added) -->
+      <!-- Chart Placeholder -->
       <section id="chart-slide">
-        <h2>Revenue Trend (interactive)</h2>
-        <div id="chart" class="chart"> <!-- JS will draw here if you wire D3/Plot --> </div>
-        <aside class="notes">When presenting, switch to the interactive chart and highlight the selectable series.</aside>
+        <h2>Revenue Trend</h2>
+        <div id="chart" class="chart"></div>
       </section>
 
-      <!-- Presenter notes / tips slide -->
       <section class="has-dark-background">
-        <h2>Presenter Tips</h2>
-        <ol>
-          <li class="fragment">Start with topline — what matters to stakeholders</li>
-          <li class="fragment">Use the notes view for detailed talking points</li>
-          <li class="fragment">Use ?v=1 cache busting after updates</li>
-        </ol>
-        <aside class="notes">Remind stakeholders of data refresh cadence and who to contact for follow-ups.</aside>
+        <h2>Presenter Notes</h2>
+        <ul>
+          <li class="fragment">Use ?v=1 to refresh cache</li>
+          <li class="fragment">Step-by-step explanation is included</li>
+        </ul>
       </section>
 
-      <!-- Closing slide with email again -->
       <section>
-        <h2>Questions</h2>
-        <p>Contact: <a href="mailto:24f1001642@ds.study.iitm.ac.in">24f1001642@ds.study.iitm.ac.in</a></p>
-        <aside class="notes">Open floor to questions; provide follow-up timeline for Q&A or data requests.</aside>
+        <h2>Questions?</h2>
+        <p>Contact: 24f1001642@ds.study.iitm.ac.in</p>
       </section>
 
     </div>
   </div>
 
-  <!-- Reveal.js + plugins -->
+  <!-- Reveal.js Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/markdown/markdown.esm.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/math/math.esm.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.esm.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/markdown/markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/math/math.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/notes/notes.min.js"></script>
 
-  <!-- Highlight.js (for code colorization) -->
+  <!-- Highlight.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 
   <script>
-    // Initialize Reveal with common plugins
     Reveal.initialize({
       hash: true,
       slideNumber: true,
-      history: true,
-      width: 1280,
-      height: 720,
-      margin: 0.04,
-      transition: 'slide',
-      plugins: [ RevealMarkdown, RevealMath, RevealNotes ]
+      transition: "slide",
+      plugins: [ RevealMarkdown, RevealHighlight, RevealMath, RevealNotes ]
     });
 
-    // Run highlight after initialization
-    Reveal.on('ready', function() {
-      document.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightElement(block);
-      });
-    });
-
-    // Example: lazy init chart when this slide is opened
-    Reveal.addEventListener('slidechanged', function(event) {
-      if (event.currentSlide && event.currentSlide.id === 'chart-slide') {
-        // call a function updateChart(data) if implemented
-        // updateChart(window.myRevenueData || []);
-      }
-    });
+    hljs.highlightAll();
   </script>
+
 </body>
 </html>
